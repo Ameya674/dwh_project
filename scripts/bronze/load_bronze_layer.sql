@@ -76,6 +76,11 @@ BEGIN
 		PRINT '------------------------------------';
 
 
+		PRINT '--------------------------------------';
+		PRINT 'Load CRM Tables';
+		PRINT '--------------------------------------';
+
+
 		-- loading data into the bronze.erp_CUST_AZ12 table
 		SET @start_time = GETDATE();
 		PRINT '>> Truncating Table: bronze.erp_CUST_AZ12';
