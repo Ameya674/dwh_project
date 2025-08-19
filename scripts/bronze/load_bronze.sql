@@ -87,10 +87,10 @@ BEGIN
 
 		-- loading into the bronze.erp_LOC_A101 table
 		SET @start_time = GETDATE();
-		PRINT '>> Truncating Table: bronze.erp_A101';
-		TRUNCATE TABLE bronze.erp_A101
-		PRINT '>> Inserting Data into the bronze.erp_A101 table';
-		BULK INSERT bronze.erp_A101
+		PRINT '>> Truncating Table: bronze.erp_LOC_A101';
+		TRUNCATE TABLE bronze.erp_LOC_A101
+		PRINT '>> Inserting Data into the bronze.erp_LOC_A101 table';
+		BULK INSERT bronze.erp_LOC_A101
 		FROM 'C:\sql-data-warehouse-project\datasets\source_erp\LOC_A101.csv'
 		WITH 
 		(
@@ -137,3 +137,5 @@ BEGIN
 		PRINT '=========================================='
 	END CATCH
 END
+
+EXEC bronze.load_bronze
