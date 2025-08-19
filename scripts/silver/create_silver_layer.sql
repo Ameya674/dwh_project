@@ -74,7 +74,7 @@ GO
 CREATE TABLE silver.erp_PX_CAT_G1V2 
 (
     cid NVARCHAR(50),
-    cntry NVARCHAR(50),
+    cat NVARCHAR(50),
     subcat NVARCHAR(50),
     maintenance NVARCHAR(50)
 );
