@@ -77,7 +77,7 @@ BEGIN
 
 
 		PRINT '--------------------------------------';
-		PRINT 'Load CRM Tables';
+		PRINT 'Load ERP Tables';
 		PRINT '--------------------------------------';
 
 
