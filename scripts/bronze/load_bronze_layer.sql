@@ -2,6 +2,10 @@
 -- LOAD DATA INTO THE TABLES IN BRONZE SCHEMA
 -- ===============================================================
 
+-- ===============================================================
+-- Run 'EXEC bronze.load_bronze' to load data in the bronze schema
+-- ===============================================================
+
 
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS 
 BEGIN
@@ -142,5 +146,3 @@ BEGIN
 		PRINT '=========================================='
 	END CATCH
 END
-
-EXEC bronze.load_bronze
