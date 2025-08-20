@@ -132,7 +132,7 @@ BEGIN
 		ELSE CAST(CAST(sls_ship_dt AS VARCHAR) AS DATE)
 	END AS sls_ship_dt,
 	CASE 
-		WHEN sls_due_dt = 0 OR LEN(sls_ship_dt) != 8 THEN NULL
+		WHEN sls_due_dt = 0 OR LEN(sls_due_dt) != 8 THEN NULL
 		ELSE CAST(CAST(sls_due_dt AS VARCHAR) AS DATE)
 	END AS sls_due_dt,
 	CASE 
@@ -145,6 +145,9 @@ BEGIN
 		ELSE sls_price
 	END AS sls_price
 	FROM bronze.crm_sales_details;
+	SET @end_time = GETDATE();
+	PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+	PRINT '>> -----------------------------------';
     
   END TRY
   BEGIN CATCH
