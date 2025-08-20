@@ -35,7 +35,8 @@ CREATE TABLE silver.crm_prd_info
     prd_cost INT,
     prd_line NVARCHAR(50),
     prd_start_dt DATETIME,
-    prd_end_dt DATETIME
+    prd_end_dt DATETIME,
+    dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 GO
 
@@ -45,12 +46,13 @@ CREATE TABLE silver.crm_sales_details
     sls_ord_num NVARCHAR(50),
     sls_prd_key NVARCHAR(50),
     sls_cust_id INT,
-    sls_order_dt INT,
-    sls_ship_dt INT,
-    sls_due_dt INT,
+    sls_order_dt DATE,
+    sls_ship_dt DATE,
+    sls_due_dt DATE,
     sls_sales INT,
     sls_quantity INT,
-    sls_price INT
+    sls_price INT,
+    dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 GO
 
@@ -59,7 +61,8 @@ CREATE TABLE silver.erp_CUST_AZ12
 (
     cid NVARCHAR(50),
     bdate DATE,
-    gen NVARCHAR(50)
+    gen NVARCHAR(50),
+    dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 GO
 
@@ -67,7 +70,8 @@ GO
 CREATE TABLE silver.erp_LOC_A101 
 (
     cid NVARCHAR(50),
-    cntry NVARCHAR(50)
+    cntry NVARCHAR(50),
+    dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 GO
 
@@ -77,6 +81,7 @@ CREATE TABLE silver.erp_PX_CAT_G1V2
     id NVARCHAR(50),
     cat NVARCHAR(50),
     subcat NVARCHAR(50),
-    maintenance NVARCHAR(50)
+    maintenance NVARCHAR(50),
+    dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 GO
