@@ -184,7 +184,7 @@ BEGIN
 
 	SET @start_time = GETDATE();
 	PRINT '>> Truncating Table silver.erp_LOC_A101';
-	TRUNCATE TABLE silver.erp_CUST_AZ12;
+	TRUNCATE TABLE silver.erp_LOC_A101;
 	PRINT '>> Inserting Date into silver.erp_LOC_A101';
 	INSERT INTO silver.erp_LOC_A101
 	(
