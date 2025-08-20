@@ -3,7 +3,7 @@
 -- ===============================================================
 
 -- ===============================================================
--- Run 'EXEC silver.load_silver' to load data in the bronze schema
+-- Run 'EXEC silver.load_silver' to load data in the silver schema
 -- ===============================================================
 
 
@@ -24,9 +24,9 @@ BEGIN
 
 
 	SET @start_time = GETDATE();
-	PRINT 'Truncating Table: silver.crm_cust_info';
+	PRINT '>> Truncating Table: silver.crm_cust_info';
 	TRUNCATE TABLE silver.crm_cust_info;
-	PRINT 'Inserting Data into silver.crm_cust_info';
+	PRINT '>> Inserting Data into silver.crm_cust_info';
 	INSERT INTO silver.crm_cust_info 
 	(
 		cst_id, 
@@ -67,9 +67,9 @@ BEGIN
 
 
 	SET @start_time = GETDATE();
-	PRINT 'Truncating Table silver.crm_prd_info';
+	PRINT '>> Truncating Table silver.crm_prd_info';
 	TRUNCATE TABLE silver.crm_prd_info;
-	PRINT 'Inserting Data into silver.crm_prd_info';
+	PRINT '>> Inserting Data into silver.crm_prd_info';
 	INSERT INTO silver.crm_prd_info 
 	(
 		prd_id,
@@ -104,9 +104,9 @@ BEGIN
 	
 
 	SET @start_time = GETDATE();
-	PRINT 'Truncating Table silver.crm_sales_details';
+	PRINT '>> Truncating Table silver.crm_sales_details';
 	TRUNCATE TABLE silver.crm_sales_details;
-	PRINT 'Inserting Data into silver.crm_sales_details';
+	PRINT '>> Inserting Data into silver.crm_sales_details';
 	INSERT INTO silver.crm_sales_details
 	(
 		sls_ord_num,
@@ -152,7 +152,58 @@ BEGIN
 
 
 
+	SET @start_time = GETDATE();
+	PRINT '>> Truncating Table silver.erp_CUST_AZ12';
+	TRUNCATE TABLE silver.erp_CUST_AZ12;
+	PRINT '>> Inserting Date into silver.erp_CUST_AZ12';
+	INSERT INTO TABLE silver.erp_CUST_AZ12 
+	(
+		cid,
+		bdate,
+		gen	
+	)
+	SELECT 
+	CASE
+		WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LEN(cid))
+		ELSE cid
+	END AS cid,
+	CASE
+		WHEN bdate > GETDATE() THEN NULL
+		ELSE bdate 
+	END AS bdate,
+	CASE
+		WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
+		WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
+		ELSE 'n/a'
+	END AS gen
+	FROM bronze.erp_CUST_AZ12
+	SET @end_time = GETDATE();
+	PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+	PRINT '>> -----------------------------------';
 
+
+	SET @start_time = GETDATE();
+	PRINT '>> Truncating Table silver.erp_LOC_A101';
+	TRUNCATE TABLE silver.erp_CUST_AZ12;
+	PRINT '>> Inserting Date into silver.erp_LOC_A101';
+	INSERT INTO silver.erp_LOC_A101
+	(
+		cid,
+		cntry
+	)
+	SELECT
+	REPLACE(cid, '-', '') AS cid,
+	CASE
+		WHEN TRIM(cntry) = 'DE' THEN 'Germany'
+		WHEN TRIM(cntry) IN ('US', 'USA') THEN 'United States'
+		WHEN cntry IS NULL OR cntry = '' THEN 'n/a'
+		ELSE TRIM(cntry)
+	END AS cntry
+	FROM bronze.erp_LOC_A101;
+	SET @end_time = GETDATE();
+	PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+	PRINT '>> -----------------------------------';
+	
 
 
 
