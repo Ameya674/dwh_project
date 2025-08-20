@@ -156,7 +156,7 @@ BEGIN
 	PRINT '>> Truncating Table silver.erp_CUST_AZ12';
 	TRUNCATE TABLE silver.erp_CUST_AZ12;
 	PRINT '>> Inserting Date into silver.erp_CUST_AZ12';
-	INSERT INTO TABLE silver.erp_CUST_AZ12 
+	INSERT INTO silver.erp_CUST_AZ12 
 	(
 		cid,
 		bdate,
