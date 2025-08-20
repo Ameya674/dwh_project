@@ -36,7 +36,7 @@ CREATE VIEW gold.products AS
 SELECT 
 ROW_NUMBER() OVER(ORDER BY product_info.prd_start_dt, product_info.prd_key) AS product_key,
 product_info.prd_id AS product_id,
-product_info.prd_key AS product_key,
+product_info.prd_key AS product_number,
 product_info.prd_nm AS product_name,
 product_info.cat_id AS category_id,
 product_catalog.cat AS category,
