@@ -73,7 +73,7 @@ GO
 -- create the silver.erp_PX_CAT_G1V2 table
 CREATE TABLE silver.erp_PX_CAT_G1V2 
 (
-    cid NVARCHAR(50),
+    id NVARCHAR(50),
     cat NVARCHAR(50),
     subcat NVARCHAR(50),
     maintenance NVARCHAR(50)
