@@ -81,3 +81,31 @@ sql-data-warehouse-project/
 │       └── create_gold_layer.sql
 │
 └── README.md
+
+
+---
+
+## How to Setup the Data Warehouse
+
+Follow these steps to set up and run the data warehouse:
+
+### 1. Prerequisites
+- **SQL Server** installed on your machine (Developer or Express edition works).
+- **SQL Server Management Studio (SSMS)** or any SQL client.
+- Ensure you have access to the `datasets` folder with all CSV files.
+
+---
+
+### 2. Create the Data Warehouse
+1. Open SSMS and connect to your SQL Server instance.
+2. Run the script in `scripts/bronze/create_bronze_layer.sql` to create the **Bronze tables**.
+3. Run the script in `scripts/silver/create_silver_layer.sql` to create the **Silver tables**.
+4. Run the script in `scripts/gold/create_gold_layer.sql` to create the **Gold views**.
+
+---
+
+### 3. Load Data
+1. Load raw data into the Bronze layer:
+   ```sql
+   EXEC bronze.load_bronze;
+
