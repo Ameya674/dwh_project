@@ -23,11 +23,10 @@ The Medallion Architecture organizes data into layers:
       |      Bronze     |  <-- Raw ingested data
       +-----------------+
 
-
+```
 - **Bronze**: Raw data ingestion with minimal transformation.
 - **Silver**: Cleaned, standardized, deduplicated, validated data.
 - **Gold**: Analytics-ready tables/views for BI, dashboards, and reporting.
-```
 ---
 
 ## Layers and Tables
