@@ -3,10 +3,10 @@
 ## Project Overview
 This project implements a **Data Warehouse (DW)** using SQL Server, consolidating raw CRM and ERP data, transforming it, and making it analytics-ready. It follows the **Medallion Architecture**, which organizes data into three layers: Bronze, Silver, and Gold.
 
----
 
 ## Medallion Architecture
-
+---
+```
 The Medallion Architecture organizes data into layers:
 
       +-----------------+
@@ -27,7 +27,7 @@ The Medallion Architecture organizes data into layers:
 - **Bronze**: Raw data ingestion with minimal transformation.
 - **Silver**: Cleaned, standardized, deduplicated, validated data.
 - **Gold**: Analytics-ready tables/views for BI, dashboards, and reporting.
-
+```
 ---
 
 ## Layers and Tables
