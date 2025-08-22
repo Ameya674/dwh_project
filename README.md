@@ -75,12 +75,13 @@ sql-data-warehouse-project/
 │       └── PX_CAT_G1V2.csv
 │
 ├── scripts/
-│   ├── 1_create_datawarehouse.sql
-│   ├── 2_create_bronze.sql
-│   ├── 3_load_bronze.sql
-│   ├── 4_create_silver.sql
-│   ├── 5_load_silver.sql
-│   ├── 6_create_gold_views.sql
-│   └── 7_eda_queries.sql
+│   ├── bronze/
+│   │   ├── create_bronze_layer.sql
+│   │   └── load_bronze_layer.sql
+│   ├── silver/
+│   │   ├── create_silver_layer.sql
+│   │   └── load_silver_layer.sql
+│   └── gold/
+│       └── create_gold_layer.sql
 │
 └── README.md
