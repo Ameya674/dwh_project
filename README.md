@@ -57,7 +57,7 @@ The Medallion Architecture organizes data into layers:
 
 ## File Structure
 
----
+```text
 sql-data-warehouse-project/
 │
 ├── datasets/
@@ -81,9 +81,7 @@ sql-data-warehouse-project/
 │       └── create_gold_layer.sql
 │
 └── README.md
-
-
----
+```
 
 ## How to Setup the Data Warehouse
 
