@@ -57,7 +57,7 @@ The Medallion Architecture organizes data into layers:
 
 ## File Structure
 
-
+---
 sql-data-warehouse-project/
 │
 ├── datasets/
