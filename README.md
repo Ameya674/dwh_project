@@ -97,10 +97,10 @@ Follow these steps to set up and run the data warehouse:
 2. Run the script in `scripts/create_datawarehouse.sql` to create the **Sales Data Warehouse**.
 3. Run the script in `scripts/bronze/create_bronze_layer.sql` to create the **Bronze tables**.
 4. Run the script in `scripts/bronze/load_bronze_layer.sql` to create the **bronze.load_bronze procedure**.
-5. Run ```sql EXEC bronze.load_bronze``` to execute the stored procedure.
+5. Run```EXEC bronze.load_bronze``` to execute the stored procedure.
 6. Run the script in `scripts/silver/create_silver_layer.sql` to create the **Silver tables**.
 7. Run the script in `scripts/silver/load_silver_layer.sql` to create the **silver.load_silver procedure**.
-8. Run **EXEC silver.load_silver** to execute the stored procedure.
+8. Run```EXEC silver.load_silver``` to execute the stored procedure.
 9. Run the script in `scripts/gold/create_gold_layer.sql` to create the **Gold views**.
 
 ##### You can now run exploratory analysis or business intelligence queries, such as: 
