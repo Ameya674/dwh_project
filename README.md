@@ -55,13 +55,7 @@ The Medallion Architecture organizes data into layers:
 
 ---
 
-## ETL Procedures
-
-1. Load Bronze:
-```sql
-EXEC bronze.load_bronze;
-
-
+## File Structure
 sql-data-warehouse-project/
 │
 ├── datasets/
