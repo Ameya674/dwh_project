@@ -83,27 +83,37 @@ sql-data-warehouse-project/
 └── README.md
 ```
 
-## How to Setup the Data Warehouse
+## How to Set Up the Data Warehouse
 
 Follow these steps to set up and run the data warehouse:
 
 ### 1. Prerequisites
 - **SQL Server** installed on your machine (Developer or Express edition works).
 - **SQL Server Management Studio (SSMS)** or any SQL client.
-- Ensure you have access to the `datasets` folder with all CSV files.
 
 ---
 
 ### 2. Create the Data Warehouse
 1. Open SSMS and connect to your SQL Server instance.
-2. Run the script in `scripts/bronze/create_bronze_layer.sql` to create the **Bronze tables**.
-3. Run the script in `scripts/silver/create_silver_layer.sql` to create the **Silver tables**.
-4. Run the script in `scripts/gold/create_gold_layer.sql` to create the **Gold views**.
+2. Run the script in `scripts/create_datawarehouse.sql` to create the **Sales Data Warehouse**.
+3. Run the script in `scripts/bronze/create_bronze_layer.sql` to create the **Bronze tables**.
+4. Run the script in `scripts/bronze/load_bronze_layer.sql` to create the **bronze.load_bronze procedure**.
+5. Run **EXEC bronze.load_bronze** to execute the stored procedure.
+6. Run the script in `scripts/silver/create_silver_layer.sql` to create the **Silver tables**.
+7. Run the script in `scripts/silver/load_silver_layer.sql` to create the **silver.load_silver procedure**.
+8. Run **EXEC silver.load_silver** to execute the stored procedure.
+9. Run the script in `scripts/gold/create_gold_layer.sql` to create the **Gold views**.
 
----
+##### You can now run exploratory analysis or business intelligence queries, such as: 
 
-### 3. Load Data
-1. Load raw data into the Bronze layer:
-   ```sql
-   EXEC bronze.load_bronze;
-
+```sql
+-- Top 3 countries by sales percentage
+SELECT TOP 3 
+    c.country, 
+    ROUND(CAST(SUM(s.sales_amount) AS FLOAT) / (SELECT SUM(sales_amount) FROM gold.sales) * 100, 2) AS total_sales_pct
+FROM gold.sales AS s
+LEFT JOIN gold.customers AS c
+ON s.customer_key = c.customer_key
+GROUP BY c.country
+ORDER BY total_sales_pct DESC;
+```
